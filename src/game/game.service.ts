@@ -31,19 +31,6 @@ export class GameService {
     this.players = wrap;
   }
 
-  // private createTurnLoop() {
-  //   const playersNumber = this.players.length;
-  //   function* generator() {
-  //     let counter = 0;
-  //     while (true) {
-  //       yield counter % playersNumber;
-  //       counter++;
-  //     }
-  //   }
-
-  //   return generator();
-  // }
-
   private rollTheDice() {
     return Math.floor(Math.random() * 6) + 1;
   }
@@ -106,13 +93,12 @@ export class GameService {
 
         this.setNewPlayerPosition(currentPlayer, diceValue);
 
-        const building = this.board[currentPlayer.positionOnBoard]; //atention
+        const building = this.board[currentPlayer.positionOnBoard];
 
         currentPlayer.tryBuyBuilding(building);
 
         this.collectRents(currentPlayer);
       }
-      // const currentPlayer = this.players[genNextPlayer.next().value as number];
 
       if (this.rounds === 1000) {
         //Since version 10 (or EcmaScript 2019), the specification dictates that Array.prototype.sort is stable.
